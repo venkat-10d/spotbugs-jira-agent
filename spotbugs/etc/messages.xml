@@ -6905,6 +6905,33 @@ String s = buf.toString();
 ]]>
     </Details>
   </BugPattern>
+  <BugPattern type="ACSTS_APPENDABLE_CHARSEQUENCE_TOSTRING">
+    <ShortDescription>Method calls CharSequence.toString() when appending to an Appendable</ShortDescription>
+    <LongDescription>{1} calls toString() on CharSequence when appending to an Appendable</LongDescription>
+    <Details>
+<![CDATA[
+<p> The method calls toString() on a CharSequence object when appending to an Appendable object.
+This is inefficient because Appendable.append() can directly accept CharSequence objects
+without the need to convert them to String first. This avoids creating an unnecessary
+intermediate String object.</p>
+
+<p>For example:</p>
+<pre><code>// This is inefficient
+StringBuilder sb = new StringBuilder();
+CharSequence cs = getCharSequence();
+sb.append(cs.toString());  // Creates unnecessary String object
+
+// This is better
+StringBuilder sb = new StringBuilder();
+CharSequence cs = getCharSequence();
+sb.append(cs);  // Direct append, no intermediate String
+</code></pre>
+
+<p>This optimization applies to all implementations of Appendable interface including
+StringBuilder, StringBuffer, Writer, PrintWriter, etc.</p>
+]]>
+    </Details>
+  </BugPattern>
   <BugPattern type="IIL_PREPARE_STATEMENT_IN_LOOP">
     <ShortDescription>Method calls prepareStatement in a loop</ShortDescription>
     <LongDescription>{1} calls prepareStatement with the constant arguments in a loop</LongDescription>

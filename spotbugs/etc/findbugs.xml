@@ -532,6 +532,8 @@
                     reports="UMAC_UNCALLABLE_METHOD_OF_ANONYMOUS_CLASS"/>
           <Detector class="edu.umd.cs.findbugs.detect.StringConcatenation" speed="fast"
                     reports="SBSC_USE_STRINGBUFFER_CONCATENATION"/>
+          <Detector class="edu.umd.cs.findbugs.detect.AppendableCharSequenceToString" speed="fast"
+                    reports="ACSTS_APPENDABLE_CHARSEQUENCE_TOSTRING"/>
           <Detector class="edu.umd.cs.findbugs.detect.InefficientInitializationInsideLoop" speed="fast" disabled="true"
                     reports="IIL_PREPARE_STATEMENT_IN_LOOP,IIL_PATTERN_COMPILE_IN_LOOP,IIL_PATTERN_COMPILE_IN_LOOP_INDIRECT,IIL_ELEMENTS_GET_LENGTH_IN_LOOP"/>
           <Detector class="edu.umd.cs.findbugs.detect.InefficientIndexOf" speed="fast" disabled="true"
